@@ -223,6 +223,21 @@ portal.azure.com에서 클러스터 / 레지스터리 생성
 dev.azure.com 로그인 (애저 계정으로)
 프로젝트 생성 -> 왼쪽 메뉴 활성화
 Pipelines -> library 에서  Variable group name 을 common-value로 설정
+
+
+
+
+서버 카프카 설치
+- az aks get-credentials --resource-group admin25 --name admin25aks
+- az aks update –n admin25aks –g admin25 --attach-acr admin25acr
+- kubectl --namespace kube-system create sa tiller     
+- kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+- helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+- helm repo update
+- kubectl create ns kafka
+- helm install my-kafka --namespace kafka incubator/kafka
+- 확인 방법
+   kubectl get po -n kafka
 . yaml에서 Variable group = common-value 로 수정 필요
 Pipeline > environments  create environment  클릭 
 

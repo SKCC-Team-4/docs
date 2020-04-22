@@ -215,4 +215,19 @@ http PATCH localhost:8081/orders/1 state=OrderCancelled
 >> 로 order 서비스를 실행하면 됩니다.  
 
 
+)))))))))))))))))))))))))))))
+Pipeline 설정
+
+portal.azure.com에서 클러스터 / 레지스터리 생성
+
+dev.azure.com 로그인 (애저 계정으로)
+프로젝트 생성 -> 왼쪽 메뉴 활성화
+Pipelines -> library 에서  Variable group name 을 common-value로 설정
+. yaml에서 Variable group = common-value 로 수정 필요
+Pipeline > environments  create environment  클릭 
+
+    Name = aks?? 
+    Kubernetes  선택 
+    클러스터, name space 선택
+위 값은 azure-pipelines.yml의 값과 일치
 
